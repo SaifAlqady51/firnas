@@ -1,7 +1,8 @@
+import { NavBar } from "@/components/navbar/navbar";
 import Image from "next/image";
 
 export default function Home() {
     return (
-        <h1>Hello</h1>
+        <main className=" align-center z-0 flex h-screen  flex-col bg-gradient-to-r from-cyan-200  to-blue-200 "></main>
     );
 }
