@@ -11,7 +11,7 @@ const config: Config = {
         extend: {
             keyframes: {
                 "slide-in": {
-                    "0%": { transform: "translateX(100%)" },
+                    "0%": { transform: "translateX(120%)" },
                     "100%": { transform: "translateX(0%)" },
                 },
                 "slide-out": {
@@ -21,7 +21,7 @@ const config: Config = {
             },
             animation: {
                 "slide-in": "slide-in 1s  ease-in-out",
-                "slide-out": "slide-out .5s  ease-in",
+                "slide-out": "slide-out .5s  ease-out",
             },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
