@@ -1,9 +1,16 @@
 import Link from "next/link";
 
-export const NavLink = ({ title }: { title: string }) => {
+interface NavLinkProps {
+    title: string;
+    side?: boolean;
+}
+
+export const NavLink = ({ title, side }: NavLinkProps) => {
     return (
         <Link
-            className="rounded-full px-4 py-2 text-xl hover:bg-gray-600"
+            className={`rounded-full ${
+                side && "my-4 flex w-56 justify-center"
+            }  px-4 py-2 text-xl hover:bg-gray-600`}
             href="./"
         >
             {title}

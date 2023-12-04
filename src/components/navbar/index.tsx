@@ -2,7 +2,7 @@ import Link from "next/link";
 import { NavToggle } from "./navToggle";
 import { NavLink } from "./navLink";
 
-export const NavBar = () => {
+const NavBar = () => {
     return (
         <div className="fixed inset-0  mx-auto mt-4 flex h-24 w-11/12 items-center justify-center rounded-full bg-blue-500/80 font-bold backdrop-blur-sm md:justify-around ">
             {/* website Name */}
@@ -22,3 +22,5 @@ export const NavBar = () => {
         </div>
     );
 };
+
+export default NavBar;

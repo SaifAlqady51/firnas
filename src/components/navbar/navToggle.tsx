@@ -1,6 +1,7 @@
 "use client";
 import ReorderIcon from "@mui/icons-material/Reorder";
 import { useState } from "react";
+import { NavLink } from "./navLink";
 
 export const NavToggle = () => {
     // menu state has three values "initail", true, false
@@ -21,22 +22,26 @@ export const NavToggle = () => {
                         ? setMenu(true)
                         : setMenu((prevValue) => !prevValue);
                 }}
-                className="absolute right-16 text-4xl md:hidden"
+                className="absolute right-16 text-4xl md:invisible"
             />
 
             {
                 //  if menu vlaue is initail then dispaly empty div
                 menu !== "initial" ? (
                     <div
-                        className={
-                            // if menu vlaue is true display side nav with animate-slide-in
-                            menu
-                                ? " absolute right-0 top-44 h-96  w-3/6 animate-slide-in rounded-3xl bg-blue-500/80 backdrop-blur-sm md:hidden"
-                                : // if menu value is false display side nav with animate-slide-out
+                        // changing styles according to the value of menu state
+                        className={`absolute flex flex-col items-center ${
+                            menu ? "right-0" : "-right-96"
+                        } top-44 h-80  w-3/6  ${
+                            menu ? "animate-slide-in" : "animate-slide-out"
+                        } rounded-3xl bg-blue-500/80 backdrop-blur-sm md:hidden`}
+                    >
+                        <NavLink title="Documentation" side={true} />
 
-                                  " animate-slide-right absolute -right-96 top-44  h-96 w-3/6 animate-slide-out rounded-3xl bg-blue-500/80 backdrop-blur-sm  md:hidden"
-                        }
-                    ></div>
+                        <NavLink title="Pricing" side={true} />
+                        <NavLink title="Login" side={true} />
+                        <NavLink title="Register" side={true} />
+                    </div>
                 ) : (
                     <div></div>
                 )
