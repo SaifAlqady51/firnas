@@ -1,4 +1,3 @@
-"use client";
 import { LoginResponse } from "@/types/loginResponse-type";
 import ChangableAlert from "./alert";
 import { UseFormHandleSubmit } from "react-hook-form";
