@@ -5,7 +5,7 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginFormSchema } from "../../schemas/loginForm-schema";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import { login } from "../users/login";
+import { login } from "../../users/login";
 import ChangableAlert from "@/components/form/alert";
 import { LoginResponse } from "../../types/loginResponse-type";
 import InputField from "@/components/form/inputField";
