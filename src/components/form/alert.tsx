@@ -1,5 +1,5 @@
 "use client";
-import { LoginResponse } from "@/app/types/loginResponse-type";
+import { LoginResponse } from "@/types/loginResponse-type";
 import Alert from "@mui/material/Alert";
 import { useState, useEffect } from "react";
 

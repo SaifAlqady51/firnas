@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { LoginResponse } from "../types/loginResponse-type";
+import { LoginResponse } from "../../types/loginResponse-type";
 
 type AxiosErrorData = {
     statusCode: number;

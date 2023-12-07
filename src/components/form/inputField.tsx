@@ -1,20 +1,20 @@
+"use client";
 import React, { FC } from "react";
 import cn from "../../utils/cn";
 import { FieldValues, UseFormRegister } from "react-hook-form";
-import { LoginInputs } from "@/app/types/loginInputs-type";
+import { Inputs } from "@/types/inputs-type";
 
-interface InputProps  extends React.InputHTMLAttributes<HTMLInputElement> {
-    register: UseFormRegister<LoginInputs>,
-    name: "email" | "password"
-}  ;
-
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+    register: UseFormRegister<Inputs>;
+    name: "email" | "password" | "name";
+}
 
 type InputFieldProps = {
     register: any;
     className: InputProps;
 };
 
-const InputField = ({register,className,...props}: InputProps ) => {
+const InputField = ({ register, className, ...props }: InputProps) => {
     return (
         <>
             <input
