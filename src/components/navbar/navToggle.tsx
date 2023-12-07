@@ -36,11 +36,11 @@ export const NavToggle = () => {
                             menu ? "animate-slide-in" : "animate-slide-out"
                         } rounded-3xl bg-blue-500/80 backdrop-blur-sm md:hidden`}
                     >
-                        <NavLink title="Documentation" side={true} />
+                        <NavLink title="Documentation" side={true} url="./" />
 
-                        <NavLink title="Pricing" side={true} />
-                        <NavLink title="Login" side={true} />
-                        <NavLink title="Register" side={true} />
+                        <NavLink title="Pricing" side={true} url="./" />
+                        <NavLink title="Login" side={true} url="/login" />
+                        <NavLink title="Register" side={true} url="register" />
                     </div>
                 ) : (
                     <div></div>
