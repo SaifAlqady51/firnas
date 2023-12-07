@@ -11,11 +11,8 @@ import { LoginResponse } from "../types/loginResponse-type";
 import InputField from "@/components/form/inputField";
 import InputError from "@/components/form/inputError";
 import { useRouter } from "next/navigation";
+import { LoginInputs } from "../types/loginInputs-type";
 
-type Inputs = {
-    email: string;
-    password: string;
-};
 
 const LoginPage = () => {
     const router = useRouter()
@@ -30,9 +27,9 @@ const LoginPage = () => {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<Inputs>({ resolver: zodResolver(LoginFormSchema) });
+    } = useForm<LoginInputs>({ resolver: zodResolver(LoginFormSchema) });
 
-    const onSubmit: SubmitHandler<Inputs> = async (data,event) => {
+    const onSubmit: SubmitHandler<LoginInputs> = async (data,event) => {
 
         event?.preventDefault()
         // get the database response form login, and store in res variable
@@ -76,7 +73,6 @@ const LoginPage = () => {
                     {/* Email field*/}
                     <InputField
                         register={register}
-                        errors={errors.email?.message}
                         type="text"
                         name="email"
                         className="mb-1 mt-4"
@@ -88,7 +84,6 @@ const LoginPage = () => {
                     {/* Password Field*/}
                     <InputField
                         register={register}
-                        errors={errors.password?.message}
                         type={viewPassword ? "text" : "password"}
                         name="password"
                     />
