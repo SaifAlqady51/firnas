@@ -23,7 +23,12 @@ const config: Config = {
                 "112": "28rem",
                 "116": "29rem",
                 "120": "30rem",
+                "124": "31rem",
+                "128": "32rem",
+                "132": "33rem"
             },
+            objectPosition:{},
+            
             screens: {
                 xsm: "385px",
             },
