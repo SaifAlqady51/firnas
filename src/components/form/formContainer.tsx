@@ -3,6 +3,9 @@ import ChangableAlert from "./alert";
 import { UseFormHandleSubmit } from "react-hook-form";
 import { Inputs } from "@/types/inputs-type";
 import { SubmitHandler } from "react-hook-form";
+import cn from "@/utils/cn";
+import Link from "next/link";
+import { redirect } from "next/dist/server/api-utils";
 
 interface FormCardContainerProps {
     children: React.ReactNode;
@@ -10,6 +13,9 @@ interface FormCardContainerProps {
     formTitle: string;
     handleSubmit: UseFormHandleSubmit<Inputs>;
     onSubmit: SubmitHandler<Inputs>;
+    className?: string;
+    redirectMessage:string
+    redirectLink: string
 }
 
 const FormCardContainer = ({
@@ -18,6 +24,9 @@ const FormCardContainer = ({
     formTitle,
     handleSubmit,
     onSubmit,
+    className,
+    redirectMessage,
+    redirectLink
 }: FormCardContainerProps) => {
     return (
         <div className="flex h-screen w-screen flex-col items-center justify-center bg-light ">
@@ -29,7 +38,12 @@ const FormCardContainer = ({
                 />
             )}
             {/* Form Card */}
-            <div className="relative  flex h-120  w-96 flex-col items-center justify-start bg-loginCard pt-16 xsm:rounded-3xl md:mb-20 ">
+            <div
+                className={cn(
+                    "relative  flex h-120  w-96 flex-col items-center justify-start bg-loginCard pt-16 xsm:rounded-3xl md:mb-20 ",
+                    className,
+                )}
+            >
                 {/* Firnase */}
                 <h2 className="absolute left-8 top-4 text-2xl font-extrabold text-light">
                     Firnas
@@ -42,6 +56,14 @@ const FormCardContainer = ({
                     className="relative mt-4 flex flex-col items-center"
                 >
                     {children}
+
+                    {/*  Redirect */}
+                    <h3 className=" mt-4">
+                        {redirectMessage}
+                        <span className=" text-[#bde0fe] underline">
+                            <Link href={`/${redirectLink}`}> {redirectLink}</Link>
+                        </span>{" "}
+                    </h3>
 
                     {/* Submit Buttom */}
                     <button
