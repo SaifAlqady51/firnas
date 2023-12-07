@@ -9,7 +9,7 @@ const StaticComponentsProvider = ({
     children: React.ReactNode;
 }) => {
     const pathname = usePathname();
-    const excludingRoutes = ["/login"];
+    const excludingRoutes = ["/login", "/register"];
 
     const showComponent = !excludingRoutes.includes(pathname);
 
