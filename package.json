@@ -7,18 +7,25 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "prettier": "pnpm exec prettier . --write"
+        "prettier": "pnpm exec prettier --write \"src/**/*.ts\" \"src/**/*.tsx\" "
     },
     "dependencies": {
         "@clerk/nextjs": "^4.27.2",
         "@emotion/react": "^11.11.1",
         "@emotion/styled": "^11.11.0",
+        "@hookform/resolvers": "^3.3.2",
         "@mui/icons-material": "^5.14.19",
         "@mui/material": "^5.14.19",
+        "axios": "^1.6.2",
+        "class-variance-authority": "^0.7.0",
+        "clsx": "^2.0.0",
         "next": "14.0.3",
         "react": "^18",
         "react-dom": "^18",
-        "react-icons": "^4.12.0"
+        "react-hook-form": "^7.48.2",
+        "react-icons": "^4.12.0",
+        "tailwind-merge": "^2.1.0",
+        "zod": "^3.22.4"
     },
     "devDependencies": {
         "@types/node": "^20",
