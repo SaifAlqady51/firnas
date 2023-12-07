@@ -9,6 +9,24 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            colors: {
+                light: "#e8f1f2",
+                dark: "#13293d",
+                nav: "#006494",
+                loginCard: "#1b98e0",
+                extra: "#247ba0",
+            },
+            height: {
+                "100": "25rem",
+                "104": "26rem",
+                "108": "27rem",
+                "112": "28rem",
+                "116": "29rem",
+                "120": "30rem",
+            },
+            screens: {
+                xsm: "385px",
+            },
             keyframes: {
                 "slide-in": {
                     "0%": { transform: "translateX(120%)" },
