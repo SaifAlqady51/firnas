@@ -9,7 +9,7 @@ type AxiosErrorData = {
 export const login = async (email: string, password: string) => {
     try {
         const user = await axios.post(
-            "https://airport-api-production-9cfb.up.railway.app/users/login",
+            `${process.env.USERS_URL}/login`,
             { email, password },
         );
         // const user = await axios(config)

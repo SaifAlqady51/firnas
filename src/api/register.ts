@@ -10,7 +10,7 @@ type AxiosErrorData = {
 export const userRegister = async (name:string | undefined,email: string, password: string) => {
     try {
         const user = await axios.post(
-            "https://airport-api-production-9cfb.up.railway.app/users/register",
+            `${process.env.USERS_URL}/register`,
             {name, email, password },
         );
         // const user = await axios(config)

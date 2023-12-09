@@ -11,7 +11,7 @@ const sendMail = async({to,subject,body}: SendMailProps) => {
     const transport = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: "saifalqady52@gmail.com",
+            user: process.env.SMTP_EMAIL,
             pass: process.env.SMTP_PASSWORD
         }
     })
@@ -27,7 +27,7 @@ const sendMail = async({to,subject,body}: SendMailProps) => {
 
     try{
         const sendResult = await transport.sendMail({
-            from: "saifalqady52@gmail.com",
+            from: process.env.SMTP_EMAIL,
             to,
             subject,
             html:body
