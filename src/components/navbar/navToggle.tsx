@@ -8,9 +8,9 @@ export const NavToggle = () => {
     const [menu, setMenu] = useState<string | boolean>("initial");
 
     // this setTimeout used to reset menu value to initial after .5s when it is false
-    if (menu === false) {
-        setTimeout(() => setMenu("initial"), 500);
-    }
+    // if (menu === false) {
+    //     setTimeout(() => setMenu("initial"), 1000);
+    // }
 
     return (
         <>
@@ -31,7 +31,7 @@ export const NavToggle = () => {
                     <div
                         // changing styles according to the value of menu state
                         className={`absolute flex flex-col items-center ${
-                            menu ? "right-0" : "-right-96"
+                            menu ? "right-0" : "-right-55/100"
                         } top-44 h-80  w-3/6  ${
                             menu ? "animate-slide-in" : "animate-slide-out"
                         } rounded-3xl bg-blue-500/80 backdrop-blur-sm md:hidden`}

@@ -44,7 +44,13 @@ const config: Config = {
             },
             animation: {
                 "slide-in": "slide-in 1s  ease-in-out",
-                "slide-out": "slide-out .5s  ease-out",
+                "slide-out": "slide-out .5s  ease-in",
+            },
+            inset:{
+                "55/100": "55%",
+                "18": "4.5rem",
+                "42": "10.5rem",
+                "66": "16.5rem"
             },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
