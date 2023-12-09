@@ -7,7 +7,7 @@ type InputErrorProps = {
 
 const InputError = ({ errorMessage, className }: InputErrorProps) => {
     return (
-        <p className={cn("absolute top-20 text-lg text-[#800f2f]", className)}>
+        <p className={cn("absolute top-20 text-lg text-[#a4161a]", className)}>
             {errorMessage}
         </p>
     );
