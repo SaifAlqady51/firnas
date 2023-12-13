@@ -1,7 +1,13 @@
-import { LoginResponse } from "@/types/loginResponse-type";
+import { FormResponseType } from "@/types/loginResponse-type";
 import ChangableAlert from "./alert";
 import { UseFormHandleSubmit } from "react-hook-form";
-import { Inputs } from "@/types/inputs-type";
+import {
+    Inputs,
+    LoginInputs,
+    RegisterCodeInputs,
+    RegisterInputs,
+    RegisterPasswordInputs,
+} from "@/types/inputs-type";
 import { SubmitHandler } from "react-hook-form";
 import cn from "@/utils/cn";
 import Link from "next/link";
@@ -9,13 +15,13 @@ import { redirect } from "next/dist/server/api-utils";
 
 interface FormCardContainerProps {
     children: React.ReactNode;
-    resStatus?: LoginResponse | undefined;
+    resStatus?: FormResponseType | undefined;
     formTitle: string;
     handleSubmit: UseFormHandleSubmit<Inputs>;
     onSubmit: SubmitHandler<Inputs>;
     className?: string;
-    redirectMessage:string
-    redirectLink: string
+    redirectMessage?: string;
+    redirectLink?: string;
 }
 
 const FormCardContainer = ({
@@ -26,7 +32,7 @@ const FormCardContainer = ({
     onSubmit,
     className,
     redirectMessage,
-    redirectLink
+    redirectLink,
 }: FormCardContainerProps) => {
     return (
         <div className="flex h-screen w-screen flex-col items-center justify-center bg-light ">
@@ -61,7 +67,10 @@ const FormCardContainer = ({
                     <h3 className=" mt-4">
                         {redirectMessage}
                         <span className=" text-[#bde0fe] underline">
-                            <Link href={`/${redirectLink}`}> {redirectLink}</Link>
+                            <Link href={`/${redirectLink}`}>
+                                {" "}
+                                {redirectLink}
+                            </Link>
                         </span>{" "}
                     </h3>
 

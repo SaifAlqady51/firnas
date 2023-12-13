@@ -6,21 +6,19 @@ type AxiosErrorData = {
     message: string;
 };
 
-export const userRegister = async (
-    name: string | undefined,
-    email: string,
-    password: string,
-) => {
+export const validateEmail = async (email: string) => {
     try {
-        const user = await axios.post(`${process.env.USERS_URL}/register`, {
-            name,
-            email,
-            password,
-        });
+        const user = await axios.post(
+            `${process.env.USERS_URL}/send-validation-email`,
+            { email },
+        );
         // const user = await axios(config)
+        console.log(user.data);
         const status = "success";
-        const message = "logged in successfully";
-        const res: FormResponseType = { message, status };
+        const message = user.data.message;
+        const code = user.data.randomNumber;
+        const res: FormResponseType = { message, status, code };
+        console.log(res);
         return res;
     } catch (e) {
         const error = e as AxiosError;

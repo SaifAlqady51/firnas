@@ -6,20 +6,20 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginFormSchema } from "../../schemas/loginForm-schema";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { login } from "../../api/login";
-import { LoginResponse } from "../../types/loginResponse-type";
+import { FormResponseType } from "../../types/loginResponse-type";
 import InputField from "@/components/form/inputField";
 import InputError from "@/components/form/inputError";
 import { useRouter } from "next/navigation";
-import { Inputs } from "../../types/inputs-type";
+import { Inputs, LoginInputs } from "../../types/inputs-type";
 import FormContainer from "@/components/form/formContainer";
 
 const LoginPage = () => {
     const router = useRouter();
     // resStatus state store the Login User response values
-    const [resStatus, setResStatus] = useState<LoginResponse>();
+    const [resStatus, setResStatus] = useState<FormResponseType>();
 
     // viewPassword toggle between true and false to dispaly or hide password
-    const [viewPassword, setViewPassword] = useState<boolean>(false);
+    const [viewPassword, setViewPassword] = useState(false);
 
     // useForm is an react-hook-form state
     const {
@@ -30,14 +30,17 @@ const LoginPage = () => {
 
     const onSubmit: SubmitHandler<Inputs> = async (data, event) => {
         event?.preventDefault();
+        console.log(data);
         // get the database response form login api
-        const loginResponse = await login(data.email, data.password);
+        if (data.email && data.password) {
+            const loginResponse = await login(data.email, data.password);
+            setResStatus(loginResponse);
+            if (loginResponse?.status === "success") {
+                router.push("/");
+            }
+        }
 
         // store the login response in resStatus state
-        setResStatus(loginResponse);
-        if (loginResponse?.status === "success") {
-            router.push("/");
-        }
     };
 
     return (
@@ -73,11 +76,13 @@ const LoginPage = () => {
             />
 
             {/* Password toggle visability */}
-            <RemoveRedEyeIcon
-                onClick={() => setViewPassword((viewPassword) => !viewPassword)}
-                className="absolute right-2 top-32 "
-            />
 
+            <RemoveRedEyeIcon
+                onClick={() =>
+                    setViewPassword((viewPassword: boolean) => !viewPassword)
+                }
+                className="absolute right-2 top-32"
+            />
         </FormContainer>
     );
 };

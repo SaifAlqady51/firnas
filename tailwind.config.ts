@@ -50,6 +50,7 @@ const config: Config = {
                 "55/100": "55%",
                 "18": "4.5rem",
                 "42": "10.5rem",
+                "55": "13.75rem",
                 "66": "16.5rem"
             },
             backgroundImage: {
