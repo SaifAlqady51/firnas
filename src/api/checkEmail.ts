@@ -1,5 +1,9 @@
 import axios, { AxiosError } from "axios";
-import { FormResponseType } from "../types/loginResponse-type";
+import {
+    FailedFormResponseType,
+    SuccessFormResponseType,
+} from "../types/apiRespons-types";
+import { errorResponse } from "./errorResponse";
 
 type AxiosErrorData = {
     statusCode: number;
@@ -12,17 +16,13 @@ export const checkEmail = async (email: string) => {
             `${process.env.USERS_URL}/check-email-existence`,
             { email },
         );
-        // const user = await axios(config)
-        const status = "success";
-        const message = "";
-        const res: FormResponseType = { message, status };
+        const res: SuccessFormResponseType = {
+            message: "Valid Email",
+            status: "success",
+        };
         return res;
     } catch (e) {
-        const error = e as AxiosError;
-        const dataError = error?.response?.data as AxiosErrorData;
-        const status = "error";
-        const message = dataError.message;
-        const res: FormResponseType = { message, status };
+        const res = errorResponse(e);
         return res;
     }
 };

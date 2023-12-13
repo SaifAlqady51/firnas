@@ -1,28 +1,30 @@
 import axios, { AxiosError } from "axios";
-import { FormResponseType } from "../types/loginResponse-type";
+import {
+    FailedFormResponseType,
+    LoginResponseType,
+} from "../types/apiRespons-types";
+import { errorResponse } from "./errorResponse";
 
 type AxiosErrorData = {
     statusCode: number;
     message: string;
 };
 
-export const login = async (email: string, password: string) => {
+export const userLogin = async (email: string, password: string) => {
     try {
         const user = await axios.post(`${process.env.USERS_URL}/login`, {
             email,
             password,
         });
-        // const user = await axios(config)
-        const status = "success";
-        const message = "logged in successfully";
-        const res: FormResponseType = { message, status };
+        const userData = user.data;
+        const res: LoginResponseType = {
+            message: "Logged in successfully",
+            status: "success",
+            userData,
+        };
         return res;
     } catch (e) {
-        const error = e as AxiosError;
-        const dataError = error?.response?.data as AxiosErrorData;
-        const status = "error";
-        const message = dataError.message;
-        const res: FormResponseType = { message, status };
+        const res = errorResponse(e);
         return res;
     }
 };

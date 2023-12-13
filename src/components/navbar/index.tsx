@@ -1,6 +1,7 @@
-import Link from "next/link";
 import { NavToggle } from "./navToggle";
 import { NavLink } from "./navLink";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import NavLinksContainer from "./navLinksContainer";
 
 const NavBar = () => {
     return (
@@ -15,10 +16,7 @@ const NavBar = () => {
                 <NavLink title="Documentation" url="./" />
                 <NavLink title="Pricing" url="./" />
             </div>
-            <div className="hidden w-1/5 justify-around md:flex  xl:w-2/12 2xl:w-1/12  2xl:justify-between">
-                <NavLink title="login" url="/login" />
-                <NavLink title="Register" url="register" />
-            </div>
+            <NavLinksContainer />
         </div>
     );
 };
