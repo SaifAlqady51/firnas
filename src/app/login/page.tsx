@@ -1,22 +1,29 @@
 "use client";
-import Link from "next/link";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginFormSchema } from "../../schemas/loginForm-schema";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import { login } from "../../api/login";
-import { FormResponseType } from "../../types/loginResponse-type";
+import { userLogin } from "@/api";
+import {
+    FailedFormResponseType,
+    LoginResponseType,
+} from "../../types/apiRespons-types";
 import InputField from "@/components/form/inputField";
 import InputError from "@/components/form/inputError";
 import { useRouter } from "next/navigation";
 import { Inputs, LoginInputs } from "../../types/inputs-type";
 import FormContainer from "@/components/form/formContainer";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 const LoginPage = () => {
     const router = useRouter();
     // resStatus state store the Login User response values
-    const [resStatus, setResStatus] = useState<FormResponseType>();
+    const [resStatus, setResStatus] = useState<
+        FailedFormResponseType | LoginResponseType
+    >();
+    // custom hooks
+    const { setItem } = useLocalStorage("user");
 
     // viewPassword toggle between true and false to dispaly or hide password
     const [viewPassword, setViewPassword] = useState(false);
@@ -30,11 +37,16 @@ const LoginPage = () => {
 
     const onSubmit: SubmitHandler<Inputs> = async (data, event) => {
         event?.preventDefault();
-        console.log(data);
+
         // get the database response form login api
         if (data.email && data.password) {
-            const loginResponse = await login(data.email, data.password);
+            // get login response from API
+            const loginResponse = await userLogin(data.email, data.password);
+            // store response in ResStatus state
             setResStatus(loginResponse);
+            // add email to local storage
+            setItem({ email: data.email });
+
             if (loginResponse?.status === "success") {
                 router.push("/");
             }

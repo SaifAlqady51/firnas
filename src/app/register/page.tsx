@@ -9,10 +9,12 @@ import InputField from "@/components/form/inputField";
 import InputError from "@/components/form/inputError";
 import { checkEmail } from "@/api/checkEmail";
 import { useState } from "react";
-import { FormResponseType } from "@/types/loginResponse-type";
-import sendMail from "@/lib/mail";
+import {
+    FailedFormResponseType,
+    RegisterResponseType,
+    ValidateEmailResponseType,
+} from "@/types/apiRespons-types";
 import { validateEmail } from "@/api/sendValidationEmail";
-import Link from "next/link";
 
 const RegisterPage = () => {
     // router
@@ -22,7 +24,11 @@ const RegisterPage = () => {
     const [viewPassword, setViewPassword] = useState(false);
 
     // response status
-    const [resStatus, setResStatus] = useState<FormResponseType>();
+    const [resStatus, setResStatus] = useState<
+        | FailedFormResponseType
+        | RegisterResponseType
+        | ValidateEmailResponseType
+    >();
 
     // useForm from react-hook-form
     const {
@@ -32,15 +38,20 @@ const RegisterPage = () => {
     } = useForm<Inputs>({ resolver: zodResolver(RegisterFormSchema) });
 
     // handle submition
-    const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        console.log(data);
+    const onSubmit: SubmitHandler<Inputs> = async (data, event) => {
+        event?.preventDefault();
+
         if (data.email) {
             // returning register response that chech if the emial already exists
             const registerResponse = await checkEmail(data.email);
-            console.log(registerResponse);
+            // store register response to response status state
             setResStatus(registerResponse);
+            // check if register response is success
             if (registerResponse.status === "success") {
-                const emailValidation = await validateEmail(data.email);
+                // send code
+                const emailValidation = (await validateEmail(
+                    data.email,
+                )) as ValidateEmailResponseType;
                 router.push(
                     `register/code?code=${emailValidation.code}&email=${data.email}`,
                 );

@@ -1,9 +1,15 @@
 "use client";
-import { FormResponseType } from "@/types/loginResponse-type";
+import {
+    FailedFormResponseType,
+    SuccessFormResponseType,
+} from "@/types/apiRespons-types";
 import Alert from "@mui/material/Alert";
 import { useState, useEffect } from "react";
 
-const ChangableAlert = ({ status, message }: FormResponseType) => {
+const ChangableAlert = ({
+    status,
+    message,
+}: FailedFormResponseType | SuccessFormResponseType) => {
     console.log(status, message);
     const [viewAlert, setViewAlert] = useState(true);
 

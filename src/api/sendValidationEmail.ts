@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { FormResponseType } from "../types/loginResponse-type";
+import { FailedFormResponseType, ValidateEmailResponseType } from "../types/loginResponse-type";
 
 type AxiosErrorData = {
     statusCode: number;
@@ -17,7 +17,7 @@ export const validateEmail = async (email: string) => {
         const status = "success";
         const message = user.data.message;
         const code = user.data.randomNumber;
-        const res: FormResponseType = { message, status, code };
+        const res: ValidateEmailResponseType = { message, status, code };
         console.log(res);
         return res;
     } catch (e) {
@@ -25,7 +25,7 @@ export const validateEmail = async (email: string) => {
         const dataError = error?.response?.data as AxiosErrorData;
         const status = "error";
         const message = dataError.message;
-        const res: FormResponseType = { message, status };
+        const res: FailedFormResponseType = { message, status };
         return res;
     }
 };

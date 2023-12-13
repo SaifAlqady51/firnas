@@ -1,4 +1,7 @@
-import { FormResponseType } from "@/types/loginResponse-type";
+import {
+    FailedFormResponseType,
+    SuccessFormResponseType,
+} from "@/types/apiRespons-types";
 import ChangableAlert from "./alert";
 import { UseFormHandleSubmit } from "react-hook-form";
 import {
@@ -15,7 +18,7 @@ import { redirect } from "next/dist/server/api-utils";
 
 interface FormCardContainerProps {
     children: React.ReactNode;
-    resStatus?: FormResponseType | undefined;
+    resStatus?: FailedFormResponseType | SuccessFormResponseType | undefined;
     formTitle: string;
     handleSubmit: UseFormHandleSubmit<Inputs>;
     onSubmit: SubmitHandler<Inputs>;
