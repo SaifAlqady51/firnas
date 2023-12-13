@@ -1,7 +1,4 @@
-import {z} from 'zod'
-
-
-
+import { z } from "zod";
 
 export const RegisterPasswordFormSchema = z.object({
     password: z

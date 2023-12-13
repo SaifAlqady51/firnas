@@ -6,7 +6,7 @@ import { Inputs } from "@/types/inputs-type";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     register: UseFormRegister<Inputs>;
-    name: "email" | "password" | "name";
+    name: "email" | "password" | "name" | "code";
 }
 
 type InputFieldProps = {
