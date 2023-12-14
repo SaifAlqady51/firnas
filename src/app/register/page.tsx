@@ -15,10 +15,15 @@ import {
     ValidateEmailResponseType,
 } from "@/types/apiRespons-types";
 import { validateEmail } from "@/api/sendValidationEmail";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 const RegisterPage = () => {
     // router
     const router = useRouter();
+
+    // custom local storage hook
+
+    const { setItem } = useLocalStorage("user");
 
     // password visibility
     const [viewPassword, setViewPassword] = useState(false);
@@ -49,11 +54,12 @@ const RegisterPage = () => {
             // check if register response is success
             if (registerResponse.status === "success") {
                 // send code
+                setItem({ email: data.email, name: data.name });
                 const emailValidation = (await validateEmail(
                     data.email,
                 )) as ValidateEmailResponseType;
                 router.push(
-                    `register/code?code=${emailValidation.code}&email=${data.email}`,
+                    `register/code?code=${emailValidation.code}&email=${data.email}&name=${data.name}`,
                 );
                 setResStatus(emailValidation);
             }

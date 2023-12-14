@@ -5,4 +5,5 @@ export const RegisterPasswordFormSchema = z.object({
         .string()
         .min(8, { message: "short password min 8" })
         .max(18, { message: "long password max 18" }),
+    rePassword:z.string()
 });

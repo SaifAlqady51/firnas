@@ -24,6 +24,8 @@ const CodePage = () => {
 
     // get email query
     const email = searchParams.get("email");
+    // get name query
+    const name = searchParams.get("name");
 
     // state for response status
     const [resStatus, setResStatus] = useState<
@@ -43,7 +45,9 @@ const CodePage = () => {
     } = useForm<Inputs>();
 
     const sendEmailAgain = async (email: string) => {
+        // validate email by sending message code
         const EmailValidationResponse = await validateEmail(email);
+
         if (EmailValidationResponse.status === "success") {
             router.push(
                 `/register/code?code=${EmailValidationResponse.code}&email=${email}`,
@@ -55,11 +59,16 @@ const CodePage = () => {
     };
 
     const onSubmition: SubmitHandler<Inputs> = async (data) => {
+        // if code is passed
         if (data.code) {
+            // compare passed code to hashed code
             const correctCode = await bcrypt.compare(data.code, `${code}`);
+            // if code compared successfully
             if (correctCode) {
-                setItem({ email: email });
-                router.push("/");
+                // save email and name  to local storage
+                // setItem({ email: email,name:name});
+                // go to register password to set password
+                router.push(`/register/password?email=${email}&name=${name}`);
             } else {
                 setResStatus({
                     status: "error",

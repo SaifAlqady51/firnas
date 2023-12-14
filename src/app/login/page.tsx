@@ -28,7 +28,7 @@ const LoginPage = () => {
     // viewPassword toggle between true and false to dispaly or hide password
     const [viewPassword, setViewPassword] = useState(false);
 
-    // useForm is an react-hook-form state
+    // useForm is an react-hook-form 
     const {
         register,
         handleSubmit,
