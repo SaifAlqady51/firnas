@@ -1,8 +1,5 @@
-import axios, { AxiosError } from "axios";
-import {
-    FailedFormResponseType,
-    ValidateEmailResponseType,
-} from "../types/apiRespons-types";
+import axios from "axios";
+import { ValidateEmailResponseType } from "../types/apiRespons-types";
 import { errorResponse } from "./errorResponse";
 
 export const validateEmail = async (email: string) => {

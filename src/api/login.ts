@@ -1,14 +1,6 @@
-import axios, { AxiosError } from "axios";
-import {
-    FailedFormResponseType,
-    LoginResponseType,
-} from "../types/apiRespons-types";
+import axios from "axios";
+import { LoginResponseType } from "../types/apiRespons-types";
 import { errorResponse } from "./errorResponse";
-
-type AxiosErrorData = {
-    statusCode: number;
-    message: string;
-};
 
 export const userLogin = async (email: string, password: string) => {
     try {

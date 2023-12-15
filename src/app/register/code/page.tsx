@@ -1,65 +1,37 @@
 "use client";
+import React from "react";
 import FormCardContainer from "@/components/form/formContainer";
-import { useSearchParams } from "next/navigation";
-import InputField from "@/components/form/inputField";
-import { Inputs, RegisterCodeInputs } from "@/types/inputs-type";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Inputs } from "@/types/inputs-type";
 import * as bcrypt from "bcryptjs";
-import { validateEmail } from "@/api/";
-import { useState } from "react";
 import {
     FailedFormResponseType,
     ValidateEmailResponseType,
 } from "@/types/apiRespons-types";
-import { useRouter } from "next/navigation";
-import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { RegisterCodeFormSchema } from "@/schemas/registerCode-schema";
+
+interface onSubmitLogicInputs {
+    data: Inputs;
+    setResStatus: React.Dispatch<
+        React.SetStateAction<FailedFormResponseType | ValidateEmailResponseType>
+    >;
+    router: AppRouterInstance;
+    code: string;
+    name: string;
+    email: string;
+}
 
 // this page display a form with cod input to type the code sent to you by email
 const CodePage = () => {
-    // get the query from url
-    const searchParams = useSearchParams();
-
-    // get code query
-    const code = searchParams.get("code");
-
-    // get email query
-    const email = searchParams.get("email");
-    // get name query
-    const name = searchParams.get("name");
-
-    // state for response status
-    const [resStatus, setResStatus] = useState<
-        FailedFormResponseType | ValidateEmailResponseType
-    >();
-
-    // route handling
-    const router = useRouter();
-
-    // customed hook
-    const { setItem } = useLocalStorage("user");
-
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<Inputs>();
-
-    const sendEmailAgain = async (email: string) => {
-        // validate email by sending message code
-        const EmailValidationResponse = await validateEmail(email);
-
-        if (EmailValidationResponse.status === "success") {
-            router.push(
-                `/register/code?code=${EmailValidationResponse.code}&email=${email}`,
-            );
-            router.refresh();
-
-            setResStatus(EmailValidationResponse);
-        }
-    };
-
-    const onSubmition: SubmitHandler<Inputs> = async (data) => {
-        // if code is passed
+    // onSubmit logic for code form
+    const onSubmitLogic = async ({
+        data,
+        setResStatus,
+        router,
+        code,
+        name,
+        email,
+    }: onSubmitLogicInputs) => {
         if (data.code) {
             // compare passed code to hashed code
             const correctCode = await bcrypt.compare(data.code, `${code}`);
@@ -80,23 +52,14 @@ const CodePage = () => {
 
     return (
         <FormCardContainer
-            onSubmit={onSubmition}
+            onSubmitLogic={onSubmitLogic}
             formTitle="Enter Code"
-            handleSubmit={handleSubmit}
             redirectLink="register"
             redirectMessage="change email"
-            resStatus={resStatus}
             className="h-108"
-        >
-            <InputField register={register} name="code" />
-            <div
-                className="mb-4 cursor-pointer text-lg"
-                onClick={() => sendEmailAgain(email!)}
-            >
-                {" "}
-                send code again{" "}
-            </div>
-        </FormCardContainer>
+            inputsValue={["code"]}
+            formInputsType={RegisterCodeFormSchema}
+        />
     );
 };
 export default CodePage;

@@ -1,6 +1,5 @@
 import { NavToggle } from "./navToggle";
 import { NavLink } from "./navLink";
-import { useLocalStorage } from "@/hooks/useLocalStorage";
 import NavLinksContainer from "./navLinksContainer";
 
 const NavBar = () => {

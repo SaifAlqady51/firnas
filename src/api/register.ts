@@ -1,14 +1,6 @@
-import axios, { AxiosError } from "axios";
-import {
-    FailedFormResponseType,
-    SuccessFormResponseType,
-} from "../types/apiRespons-types";
+import axios from "axios";
+import { SuccessFormResponseType } from "../types/apiRespons-types";
 import { errorResponse } from "./errorResponse";
-
-type AxiosErrorData = {
-    statusCode: number;
-    message: string;
-};
 
 export const userRegister = async (
     name: string | undefined,
@@ -16,7 +8,7 @@ export const userRegister = async (
     password: string,
 ) => {
     try {
-        const user = await axios.post(`${process.env.USERS_URL}/register`, {
+        await axios.post(`${process.env.USERS_URL}/register`, {
             name,
             email,
             password,

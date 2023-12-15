@@ -1,42 +1,82 @@
+"use client";
 import {
     FailedFormResponseType,
     SuccessFormResponseType,
 } from "@/types/apiRespons-types";
 import ChangableAlert from "./alert";
-import { UseFormHandleSubmit } from "react-hook-form";
-import {
-    Inputs,
-    LoginInputs,
-    RegisterCodeInputs,
-    RegisterInputs,
-    RegisterPasswordInputs,
-} from "@/types/inputs-type";
+import { useForm } from "react-hook-form";
+import { Inputs } from "@/types/inputs-type";
 import { SubmitHandler } from "react-hook-form";
 import cn from "@/utils/cn";
 import Link from "next/link";
-import { redirect } from "next/dist/server/api-utils";
+import InputField from "./inputField";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import InputError from "./inputError";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { useRouter, useSearchParams } from "next/navigation";
+
+const inputs: "email" | "password" | "rePassword" | "code" | "name" = "email";
 
 interface FormCardContainerProps {
-    children: React.ReactNode;
-    resStatus?: FailedFormResponseType | SuccessFormResponseType | undefined;
     formTitle: string;
-    handleSubmit: UseFormHandleSubmit<Inputs>;
-    onSubmit: SubmitHandler<Inputs>;
+    onSubmitLogic: any;
     className?: string;
     redirectMessage?: string;
     redirectLink?: string;
+    inputsValue: any[];
+    formInputsType: any;
 }
 
 const FormCardContainer = ({
-    children,
-    resStatus,
     formTitle,
-    handleSubmit,
-    onSubmit,
+    onSubmitLogic,
     className,
     redirectMessage,
     redirectLink,
+    inputsValue,
+    formInputsType,
 }: FormCardContainerProps) => {
+    // useLocalStorage is a custom hook that dealing with the local storage in browser
+    const { setItem } = useLocalStorage("user");
+
+    // get router
+    const router = useRouter();
+
+    // get search params form url
+    const searchParams = useSearchParams();
+
+    // get code, name and email from url
+    const code = searchParams.get("code");
+    const name = searchParams.get("name");
+    const email = searchParams.get("email");
+
+    // api response status state
+    const [resStatus, setResStatus] = useState<
+        FailedFormResponseType | SuccessFormResponseType
+    >();
+
+    // useForm from react-hook-form
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<Inputs>({ resolver: zodResolver(formInputsType) });
+
+    // onSubmit form function
+    const onSubmit: SubmitHandler<Inputs> = async (data, event) => {
+        event?.preventDefault();
+        console.log(data);
+        onSubmitLogic({
+            data,
+            setResStatus,
+            setItem,
+            router,
+            code,
+            name,
+            email,
+        });
+    };
 
     return (
         <div className="flex h-screen w-screen flex-col items-center justify-center bg-light ">
@@ -65,17 +105,23 @@ const FormCardContainer = ({
                     onSubmit={handleSubmit(onSubmit)}
                     className="relative mt-4 flex flex-col items-center"
                 >
-                    {children}
+                    {/* map over each input value in inputsValue list */}
+                    {inputsValue?.map((input: typeof inputs) => (
+                        <div key={inputsValue.indexOf(input)}>
+                            <InputField register={register} name={input} />
+                            <InputError errors={errors} name={input} />
+                        </div>
+                    ))}
+                    {/* {children} */}
 
                     {/*  Redirect */}
                     <h3 className=" mt-4">
                         {redirectMessage}
                         <span className=" text-[#bde0fe] underline">
                             <Link href={`/${redirectLink}`}>
-                                {" "}
                                 {redirectLink}
                             </Link>
-                        </span>{" "}
+                        </span>
                     </h3>
 
                     {/* Submit Buttom */}

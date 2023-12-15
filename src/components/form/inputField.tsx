@@ -1,7 +1,7 @@
 "use client";
-import React, { FC } from "react";
+import React from "react";
 import cn from "../../utils/cn";
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import { UseFormRegister } from "react-hook-form";
 import { Inputs } from "@/types/inputs-type";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -9,13 +9,12 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     name: "email" | "password" | "name" | "code" | "rePassword";
 }
 
-
 const InputField = ({ register, className, ...props }: InputProps) => {
     return (
         <>
             <input
                 className={cn(
-                    "my-12 h-12 w-80  rounded-full p-4 placeholder-gray-500",
+                    "my-6 h-12 w-80  rounded-full p-4 placeholder-gray-500",
                     className,
                 )}
                 type={props.type}
