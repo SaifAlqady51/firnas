@@ -13,7 +13,7 @@ export const NavLink = ({ title, url, side, onClick }: NavLinkProps) => {
         <Link
             onClick={onClick}
             className={`rounded-full ${
-                side && "my-4 flex w-56 justify-center"
+                side && "my-4 flex w-44 justify-center"
             }  px-4 py-2 text-xl hover:bg-blue-500`}
             href={url}
         >

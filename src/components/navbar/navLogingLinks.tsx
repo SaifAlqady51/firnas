@@ -1,11 +1,22 @@
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { NavLink } from "./navLink";
-import { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-const NavLinksContainer = () => {
-    const [user, setUser] = useState({});
-    const [update, setUpdate] = useState(true);
+interface NavLogingLinksProps {
+    user: { email: string; name: string } | {};
+    setUser: React.Dispatch<
+        React.SetStateAction<{ email: string; name: string } | {}>
+    >;
+    update: boolean;
+    setUpdate: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
+const NavLogingLinks = ({
+    user,
+    setUser,
+    update,
+    setUpdate,
+}: NavLogingLinksProps) => {
     const { getItem, removeItem } = useLocalStorage("user");
     useEffect(() => {
         const invokedUser = getItem();
@@ -33,4 +44,4 @@ const NavLinksContainer = () => {
     );
 };
 
-export default NavLinksContainer;
+export default NavLogingLinks;

@@ -9,7 +9,7 @@ const Footer = () => {
                 className=" flex w-3/6 items-center justify-center"
             >
                 <div className="mr-4 text-sm font-bold sm:text-lg">
-                    contributor with me
+                    contribute with me
                 </div>
                 <GitHubIcon className="text-4xl" />
             </a>

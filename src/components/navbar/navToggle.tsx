@@ -1,22 +1,43 @@
 "use client";
 import ReorderIcon from "@mui/icons-material/Reorder";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "./navLink";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import React from "react";
 
-export const NavToggle = () => {
+interface NavToggleProps {
+    user: { email: string; name: string } | {};
+    setUser: React.Dispatch<
+        React.SetStateAction<{ email: string; name: string } | {}>
+    >;
+    update: boolean;
+    setUpdate: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const NavToggle = ({
+    user,
+    setUser,
+    update,
+    setUpdate,
+}: NavToggleProps) => {
     // menu state has three values "initail", true, false
     const [menu, setMenu] = useState<string | boolean>("initial");
 
-    // this setTimeout used to reset menu value to initial after .5s when it is false
-    // if (menu === false) {
-    //     setTimeout(() => setMenu("initial"), 1000);
-    // }
+    const { getItem, removeItem } = useLocalStorage("user");
+    useEffect(() => {
+        const invokedUser = getItem();
+        setUser(invokedUser);
+    }, [update]);
+
+    const logout = () => {
+        removeItem();
+        setUser({});
+        setUpdate((prevValue) => !prevValue);
+    };
 
     return (
         <>
             <ReorderIcon
-                // if menu === initial, then set menu to true on click
-                // but if menu is a boolean toggle between true and false
                 onClick={() => {
                     menu === "initial"
                         ? setMenu(true)
@@ -37,10 +58,28 @@ export const NavToggle = () => {
                         } rounded-3xl bg-blue-500/80 backdrop-blur-sm md:hidden`}
                     >
                         <NavLink title="Documentation" side={true} url="./" />
-
                         <NavLink title="Pricing" side={true} url="./" />
-                        <NavLink title="Login" side={true} url="/login" />
-                        <NavLink title="Register" side={true} url="register" />
+                        {!user ? (
+                            <div>
+                                <NavLink
+                                    title="Login"
+                                    side={true}
+                                    url="/login"
+                                />
+                                <NavLink
+                                    title="Register"
+                                    side={true}
+                                    url="register"
+                                />
+                            </div>
+                        ) : (
+                            <NavLink
+                                onClick={logout}
+                                title="Logout"
+                                side={true}
+                                url="/"
+                            />
+                        )}
                     </div>
                 ) : (
                     <div></div>
