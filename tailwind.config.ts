@@ -47,6 +47,7 @@ const config: Config = {
                 "slide-out": "slide-out .5s  ease-in",
             },
             inset:{
+                "9": "2.25rem",
                 "55/100": "55%",
                 "18": "4.5rem",
                 "42": "10.5rem",

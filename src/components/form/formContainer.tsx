@@ -108,7 +108,11 @@ const FormCardContainer = ({
                     {/* map over each input value in inputsValue list */}
                     {inputsValue?.map((input: typeof inputs) => (
                         <div key={inputsValue.indexOf(input)}>
-                            <InputField register={register} name={input} />
+                            <InputField
+                                register={register}
+                                name={input}
+                                type={input}
+                            />
                             <InputError errors={errors} name={input} />
                         </div>
                     ))}
