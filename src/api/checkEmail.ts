@@ -4,10 +4,9 @@ import { errorResponse } from "./errorResponse";
 
 export const checkEmail = async (email: string) => {
     try {
-        await axios.post(
-            `${process.env.USERS_URL}/check-email-existence`,
-            { email },
-        );
+        await axios.post(`${process.env.USERS_URL}/check-email-existence`, {
+            email,
+        });
         const res: SuccessFormResponseType = {
             message: "Valid Email",
             status: "success",
