@@ -36,7 +36,7 @@ const NavLogingLinks = ({
                     <NavLink title="Register" url="register" />
                 </div>
             ) : (
-                <div>
+                <div className="hidden w-1/5 justify-around md:flex  xl:w-2/12 2xl:w-1/12  2xl:justify-between">
                     <NavLink onClick={logout} title="logout" url="/"></NavLink>
                 </div>
             )}
