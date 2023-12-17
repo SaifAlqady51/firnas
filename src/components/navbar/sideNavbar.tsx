@@ -1,39 +1,20 @@
 "use client";
 import ReorderIcon from "@mui/icons-material/Reorder";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NavLink } from "./navLink";
-import { useLocalStorage } from "@/hooks/useLocalStorage";
 import React from "react";
+import { LogoutLink } from "./logoutLink";
 
 interface NavToggleProps {
     user: { email: string; name: string } | {};
     setUser: React.Dispatch<
         React.SetStateAction<{ email: string; name: string } | {}>
     >;
-    update: boolean;
-    setUpdate: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const NavToggle = ({
-    user,
-    setUser,
-    update,
-    setUpdate,
-}: NavToggleProps) => {
+export const SideNavbar = ({ user, setUser }: NavToggleProps) => {
     // menu state has three values "initail", true, false
     const [menu, setMenu] = useState<string | boolean>("initial");
-
-    const { getItem, removeItem } = useLocalStorage("user");
-    useEffect(() => {
-        const invokedUser = getItem();
-        setUser(invokedUser);
-    }, [update]);
-
-    const logout = () => {
-        removeItem();
-        setUser({});
-        setUpdate((prevValue) => !prevValue);
-    };
 
     return (
         <>
@@ -73,12 +54,7 @@ export const NavToggle = ({
                                 />
                             </div>
                         ) : (
-                            <NavLink
-                                onClick={logout}
-                                title="Logout"
-                                side={true}
-                                url="/"
-                            />
+                            <LogoutLink setUser={setUser} />
                         )}
                     </div>
                 ) : (

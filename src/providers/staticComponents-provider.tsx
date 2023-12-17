@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import NavBar from "@/components/navbar";
+import NavBar from "@/components/navbar/navbar";
 import { usePathname } from "next/navigation";
 import Footer from "@/components/footer";
 
