@@ -16,7 +16,7 @@ const InputField = ({ register, className, ...props }: InputProps) => {
     // set state for show or hide pssword
     const [showPassword, setShowPassword] = useState(false);
 
-    // set state for localType make the type passwor
+    // localType is setted according to the value of the props.type then we use it as our input type you can see that on type attribute in input field
     const [localType, setLocalType] = useState(
         props.name === "rePassword" ? "password" : props.type,
     );
@@ -40,6 +40,7 @@ const InputField = ({ register, className, ...props }: InputProps) => {
                     "my-6 h-12 w-80  rounded-full p-4 placeholder-gray-500",
                     className,
                 )}
+                // we use localType as our default type for intput field
                 type={localType}
                 placeholder={props.name}
                 {...register(props?.name)}
