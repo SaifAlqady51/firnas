@@ -27,9 +27,6 @@ const InputError = ({ errors, className, name }: InputErrorProps) => {
             errorMessage = errors.code?.message;
             break;
     }
-    console.log(errorMessage);
-    // console.log(name)
-    // console.log(errors.email?.message)
     return (
         <p
             className={cn(

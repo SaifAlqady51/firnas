@@ -66,7 +66,6 @@ const FormCardContainer = ({
     // onSubmit form function
     const onSubmit: SubmitHandler<Inputs> = async (data, event) => {
         event?.preventDefault();
-        console.log(data);
         onSubmitLogic({
             data,
             setResStatus,

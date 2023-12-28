@@ -24,7 +24,7 @@ export const SideNavbar = ({ user, setUser }: NavToggleProps) => {
                         ? setMenu(true)
                         : setMenu((prevValue) => !prevValue);
                 }}
-                className="absolute right-16 text-4xl md:invisible"
+                className="absolute right-16 text-4xl lg:invisible"
             />
 
             {
@@ -36,7 +36,7 @@ export const SideNavbar = ({ user, setUser }: NavToggleProps) => {
                             menu ? "right-0" : "-right-55/100"
                         } top-44 h-80  w-3/6  ${
                             menu ? "animate-slide-in" : "animate-slide-out"
-                        } rounded-3xl bg-blue-500/80 backdrop-blur-sm md:hidden`}
+                        } rounded-3xl bg-blue-500/80 backdrop-blur-sm LG:hidden`}
                     >
                         <NavLink title="Documentation" side={true} url="./" />
                         <NavLink title="Pricing" side={true} url="./" />

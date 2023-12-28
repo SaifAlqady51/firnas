@@ -2,7 +2,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 
 const Footer = () => {
     return (
-        <div className="flex h-24 w-full items-center justify-center bg-blue-400 ">
+        <div className="flex h-24 w-full items-center justify-center bg-blue-500/80 ">
             <a
                 href="https://github.com/SaifAlqady51/firnas"
                 target="_blank"

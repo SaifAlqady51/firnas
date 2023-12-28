@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import StaticComponentsProvider from "@/providers/staticComponents-provider";
+import { ThemesProvider } from "@/providers/themeProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,7 +19,11 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <StaticComponentsProvider>{children}</StaticComponentsProvider>
+                <ThemesProvider>
+                    <StaticComponentsProvider>
+                        {children}
+                    </StaticComponentsProvider>
+                </ThemesProvider>
             </body>
         </html>
     );
