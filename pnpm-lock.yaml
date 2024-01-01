@@ -50,6 +50,9 @@ dependencies:
   react:
     specifier: ^18
     version: 18.2.0
+  react-archer:
+    specifier: ^4.3.0
+    version: 4.3.0(@types/react@18.2.39)(prop-types@15.8.1)(react@18.2.0)
   react-dom:
     specifier: ^18
     version: 18.2.0(react@18.2.0)
@@ -3385,6 +3388,20 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
+  /react-archer@4.3.0(@types/react@18.2.39)(prop-types@15.8.1)(react@18.2.0):
+    resolution: {integrity: sha512-DXSTq/1oKEL7g5zLsvw+1WeE5Ofwd9CBooqCxcG1/0OOd5j7k5uXMRHa8Wf/8sAbUm/8cW6v1nAwHnFdFEhF6g==}
+    peerDependencies:
+      '@types/react': ^16.8.8 || ^17 || ^18
+      prop-types: ^15.6.2
+      react: ^16.9.0 || ^17 || ^18
+    dependencies:
+      '@types/react': 18.2.39
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-fast-compare: 2.0.4
+      resize-observer-polyfill: 1.5.0
+    dev: false
+
   /react-dom@18.2.0(react@18.2.0):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
@@ -3393,6 +3410,10 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-fast-compare@2.0.4:
+    resolution: {integrity: sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==}
     dev: false
 
   /react-hook-form@7.48.2(react@18.2.0):
@@ -3482,6 +3503,10 @@ packages:
     engines: {node: '>=18'}
     dependencies:
       '@react-email/render': 0.0.9
+    dev: false
+
+  /resize-observer-polyfill@1.5.0:
+    resolution: {integrity: sha512-M2AelyJDVR/oLnToJLtuDJRBBWUGUvvGigj1411hXhAdyFWqMaqHp7TixW3FpiLuVaikIcR1QL+zqoJoZlOgpg==}
     dev: false
 
   /resolve-from@4.0.0:

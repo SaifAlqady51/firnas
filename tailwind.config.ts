@@ -15,6 +15,7 @@ const config: Config = {
                 nav: "#006494",
                 loginCard: "#1b98e0",
                 extra: "#247ba0",
+                textColor:"#fefae0"
             },
             height: {
                 "100": "25rem",
@@ -52,7 +53,8 @@ const config: Config = {
                 "18": "4.5rem",
                 "42": "10.5rem",
                 "55": "13.75rem",
-                "66": "16.5rem"
+                "66": "16.5rem",
+                "100": "25rem",
             },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

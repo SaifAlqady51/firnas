@@ -4,6 +4,7 @@ import { useState } from "react";
 import { NavLink } from "./navLink";
 import React from "react";
 import { LogoutLink } from "./logoutLink";
+import { ThemeToggler } from "./themeToggler";
 
 interface NavToggleProps {
     user: { email: string; name: string } | {};
@@ -36,7 +37,7 @@ export const SideNavbar = ({ user, setUser }: NavToggleProps) => {
                             menu ? "right-0" : "-right-55/100"
                         } top-44 h-80  w-3/6  ${
                             menu ? "animate-slide-in" : "animate-slide-out"
-                        } rounded-3xl bg-blue-500/80 backdrop-blur-sm LG:hidden`}
+                        } LG:hidden rounded-3xl bg-nav backdrop-blur-sm`}
                     >
                         <NavLink title="Documentation" side={true} url="./" />
                         <NavLink title="Pricing" side={true} url="./" />

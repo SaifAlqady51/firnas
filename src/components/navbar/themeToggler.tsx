@@ -8,7 +8,7 @@ export const ThemeToggler = () => {
 
     return (
         <Brightness4Icon
-            className="absolute -right-32 -top-3 lg:static "
+            className="fixed right-8 top-9  sm:right-28   lg:static "
             onClick={() =>
                 theme === "dark" ? setTheme("light") : setTheme("dark")
             }

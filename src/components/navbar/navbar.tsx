@@ -7,7 +7,7 @@ const NavBar = () => {
 
     return (
         <div
-            className={`fixed inset-0  mx-auto mt-4 flex h-24 w-11/12 items-center justify-center rounded-full bg-blue-500/80 font-bold backdrop-blur-sm lg:justify-around`}
+            className={`text-textColor fixed  inset-0 z-50 mx-auto mt-4 flex h-24 w-11/12 items-center justify-center rounded-full bg-nav font-bold backdrop-blur-sm dark:text-[#fefae0] lg:justify-around`}
         >
             {/* website Name */}
             <div className="text-4xl font-bold">Firnas</div>
