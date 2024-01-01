@@ -4,7 +4,6 @@ import { useState } from "react";
 import { NavLink } from "./navLink";
 import React from "react";
 import { LogoutLink } from "./logoutLink";
-import { ThemeToggler } from "./themeToggler";
 
 interface NavToggleProps {
     user: { email: string; name: string } | {};

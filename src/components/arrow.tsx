@@ -1,5 +1,4 @@
 import { MdArrowForwardIos } from "react-icons/md";
-import cn from "@/utils/cn";
 type Props = {
     position: "horizontal" | "vertical";
 };
