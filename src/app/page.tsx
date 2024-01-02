@@ -2,7 +2,7 @@ import { Arrow } from "@/components/arrow";
 
 export default function Home() {
     return (
-        <main className=" align-center dark z-0 flex h-screen flex-col overscroll-x-none bg-[#89c2d9]  dark:bg-dark  dark:text-textColor  ">
+        <main className=" align-center dark z-0 flex h-screen flex-col overscroll-x-none bg-white  dark:bg-dark  dark:text-textColor  ">
             <div className="mx-40 my-40 flex flex-col items-center justify-center">
                 <div className="relative my-20  flex items-center">
                     <div className="mr-4 flex flex-col items-center justify-center text-xl">
