@@ -1,7 +1,4 @@
 import { MdArrowForwardIos } from "react-icons/md";
-type Props = {
-    position: "horizontal" | "vertical";
-};
 export const Arrow = () => {
     return (
         <div className="relative bg-yellow-500">
