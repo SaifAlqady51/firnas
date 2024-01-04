@@ -8,11 +8,12 @@ export default function Home() {
             <div className="mx-40 my-40 flex flex-col items-center justify-center">
                 <Endpoint
                     inputList={["Pass", "Airport IATA code", "EX: CAI"]}
-                    outputList={["airport", "city", "country"]}
+                    outputList={["airportName", "cityName", "countryName"]}
                 />
                 <Endpoint
                     inputList={["Pass", "City name", "EX: Cairo"]}
                     outputList={["airportName", "airportCode"]}
+                    outputType="list"
                 />
             </div>
         </main>
