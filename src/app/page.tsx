@@ -1,49 +1,19 @@
-import { Arrow } from "@/components/arrow";
+import { Arrow } from "@/components/home/arrow";
+import { APIBox } from "@/components/home/box";
+import { Endpoint } from "@/components/home/endpoint";
 
 export default function Home() {
     return (
         <main className=" align-center dark z-0 flex h-full flex-col overscroll-x-none bg-[#e2eafc]  dark:bg-dark  dark:text-textColor  ">
             <div className="mx-40 my-40 flex flex-col items-center justify-center">
-                <div className="relative my-20  flex h-fit flex-col items-center md:flex-row">
-                    <div className="mr-4 flex w-44 flex-col items-center justify-center text-xl">
-                        <p>Pass</p>
-                        <p>Airport IATA Code</p>
-                        <p>EX: CAI </p>
-                    </div>
-                    <Arrow />
-                    <div className="flex h-40 w-80 flex-col items-center rounded-lg bg-[#1b9aaa] p-8 ">
-                        <h2 className="text-3xl">Firnas</h2>
-                        <h2 className="mt-2 text-3xl">API</h2>
-                    </div>
-                    <Arrow />
-                    <div className="ml-4 flex  flex-col text-xl">
-                        <p>&#123;</p>
-                        <p className="ml-4"> airportName</p>
-                        <p className="ml-4"> city</p>
-                        <p className="ml-4"> country</p>
-                        <p>&#125;</p>
-                    </div>
-                </div>
-
-                <div className="relative my-20  flex h-fit flex-col items-center md:flex-row">
-                    <div className="mr-4 flex w-44 flex-col items-center justify-center text-xl">
-                        <p>Pass</p>
-                        <p>City name</p>
-                        <p>EX: Cairo </p>
-                    </div>
-                    <Arrow />
-                    <div className="flex h-40 w-80 flex-col items-center rounded-lg bg-[#1b9aaa] p-8">
-                        <h2 className="text-3xl">Firnas</h2>
-                        <h2 className="mt-2 text-3xl">API</h2>
-                    </div>
-                    <Arrow />
-                    <div className="ml-4 flex  flex-col text-xl">
-                        <p>list of &#123;</p>
-                        <p className="ml-4"> airportName</p>
-                        <p className="ml-4"> AirportCode</p>
-                        <p>&#125;</p>
-                    </div>
-                </div>
+                <Endpoint
+                    inputList={["Pass", "Airport IATA code", "EX: CAI"]}
+                    outputList={["airport", "city", "country"]}
+                />
+                <Endpoint
+                    inputList={["Pass", "City name", "EX: Cairo"]}
+                    outputList={["airportName", "airportCode"]}
+                />
             </div>
         </main>
     );
