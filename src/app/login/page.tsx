@@ -45,7 +45,7 @@ const LoginPage = () => {
             onSubmitLogic={onSubmitLogic}
             formTitle="Log in to account"
             redirectMessage="create new account"
-            redirectLink="register"
+            redirectLink=" register"
             formInputsType={LoginFormSchema}
             inputsValue={["email", "password"]}
         />

@@ -37,7 +37,7 @@ const InputField = ({ register, className, ...props }: InputProps) => {
         <div className="relative">
             <input
                 className={cn(
-                    "my-6 h-12 w-80  rounded-full p-4 placeholder-gray-500",
+                    "z-10 my-6 h-12 w-80 rounded-full bg-white p-4 text-black placeholder-gray-500",
                     className,
                 )}
                 // we use localType as our default type for intput field
@@ -48,12 +48,12 @@ const InputField = ({ register, className, ...props }: InputProps) => {
             {props.name === "password" || props.name === "rePassword" ? (
                 showPassword ? (
                     <VisibilityIcon
-                        className="absolute right-4 top-9"
+                        className="absolute right-4 top-9 z-20 text-black"
                         onClick={passwordInvisibality}
                     />
                 ) : (
                     <VisibilityOffIcon
-                        className="absolute right-4 top-9"
+                        className="absolute right-4 top-9 z-20 text-black"
                         onClick={passwordVisible}
                     />
                 )
