@@ -5,9 +5,15 @@ type Props = {
     inputList: string[];
     outputList: string[];
     outputType?: string;
+    link: string;
 };
 
-export const Endpoint = ({ inputList, outputList, outputType }: Props) => {
+export const Endpoint = ({
+    inputList,
+    outputList,
+    outputType,
+    link,
+}: Props) => {
     return (
         <div className="relative my-20  flex h-fit flex-col items-center md:flex-row">
             <div className="mr-4 flex w-44 flex-col items-center justify-center text-xl">
@@ -16,7 +22,7 @@ export const Endpoint = ({ inputList, outputList, outputType }: Props) => {
                 ))}
             </div>
             <Arrow />
-            <APIBox />
+            <APIBox link={link} />
             <Arrow />
             <div className="ml-4 flex  w-44 flex-col text-xl">
                 {outputType && <p>A List of :</p>}
