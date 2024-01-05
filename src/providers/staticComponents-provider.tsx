@@ -22,7 +22,12 @@ const StaticComponentsProvider = ({
     return (
         <>
             {showComponent && <NavBar />}
-            {children}
+
+            <main className=" align-center dark z-0 flex h-full flex-col overscroll-x-none bg-[#e2eafc]  dark:bg-dark  dark:text-textColor  ">
+                <div className="mx-40 my-40 flex flex-col items-center justify-center">
+                    {children}
+                </div>
+            </main>
             {showComponent && <Footer />}
         </>
     );
