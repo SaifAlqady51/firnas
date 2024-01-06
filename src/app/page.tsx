@@ -6,7 +6,7 @@ export default function Home() {
             <Endpoint
                 inputList={["Pass", "Airport IATA code", "EX: CAI"]}
                 outputList={["airportName", "cityName", "countryName"]}
-                link="/"
+                link="/airportInfo"
             />
             <Endpoint
                 inputList={["Pass", "City name", "EX: Cairo"]}
