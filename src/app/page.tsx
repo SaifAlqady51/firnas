@@ -13,7 +13,7 @@ export default function Home() {
                     inputList={["Pass", "City name", "EX: Cairo"]}
                     outputList={["airportName", "airportCode"]}
                     outputType="list"
-                    link="/"
+                    link="/cityAirports"
                 />
             </div>
         </main>
