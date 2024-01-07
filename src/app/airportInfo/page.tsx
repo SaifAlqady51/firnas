@@ -16,6 +16,7 @@ const AirportInfoPage = () => {
     return (
         <main className=" align-center dark z-0 flex  h-screen flex-col items-center overscroll-x-none bg-[#e2eafc]  dark:bg-dark  dark:text-textColor  ">
             <div className=" my-60   flex h-fit w-4/5 flex-col items-center justify-center">
+                {/* endpoint explination */}
                 <div className="mb-12 text-xl font-semibold">
                     Use this endpoint if you want to to get airport information
                     from airport IATA code{"  "}
@@ -24,6 +25,7 @@ const AirportInfoPage = () => {
                         https://airport-api-gamma.vercel.app/api/airport/get/airportName?airportCode=CAI{" "}
                     </p>
                 </div>
+                {/* endpoint link */}
                 <div
                     onClick={copyText}
                     className="relative mb-28 flex w-11/12 items-center justify-around rounded-lg border-2 border-black bg-black   px-2 py-4 text-black dark:bg-blue-50 lg:w-full xl:w-10/12  2xl:w-7/12"
@@ -41,7 +43,7 @@ const AirportInfoPage = () => {
                         </div>
                     )}
                 </div>
-
+                {/* endpoint box ui */}
                 <Endpoint
                     inputList={["Pass", "Airport IATA code", "EX: CAI"]}
                     outputList={["airportName", "cityName", "countryName"]}
