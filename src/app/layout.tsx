@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import StaticComponentsProvider from "@/providers/staticComponents-provider";
+import LayoutProvider from "@/providers/layoutProvider";
 import { ThemesProvider } from "@/providers/themeProvider";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +20,7 @@ export default function RootLayout({
         <html lang="en">
             <body className={inter.className}>
                 <ThemesProvider>
-                    <StaticComponentsProvider>
-                        {children}
-                    </StaticComponentsProvider>
+                    <LayoutProvider>{children}</LayoutProvider>
                 </ThemesProvider>
             </body>
         </html>
