@@ -14,11 +14,7 @@ interface LogoutLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
     >;
 }
 
-export const LogoutLink = ({
-    setUser,
-    className,
-    ...props
-}: LogoutLinkProps) => {
+export const LogoutLink = ({ setUser, className }: LogoutLinkProps) => {
     // this state used as a depandency for useEffect
     const [update, setUpdate] = useState(true);
 
