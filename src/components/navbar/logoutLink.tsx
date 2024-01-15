@@ -1,6 +1,7 @@
 import React, { SetStateAction, useEffect, useState } from "react";
 import { NavLink } from "./navLink";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import Link from "next/link";
 
 interface LogoutLinkProps {
     setUser: React.Dispatch<
@@ -37,5 +38,9 @@ export const LogoutLink = ({ setUser }: LogoutLinkProps) => {
         setUpdate((prevValue) => !prevValue);
     };
 
-    return <NavLink onClick={logout} title="Logout" url="/" />;
+    return (
+        <Link onClick={logout} href="/">
+            Logout
+        </Link>
+    );
 };
