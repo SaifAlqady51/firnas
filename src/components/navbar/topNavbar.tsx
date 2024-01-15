@@ -1,6 +1,5 @@
 import { NavLink } from "./navLink";
 import React from "react";
-import { LogoutLink } from "./logoutLink";
 import { ThemeToggler } from "./themeToggler";
 import { ProfileTab } from "./ProfileTab";
 
@@ -14,7 +13,7 @@ interface TopNavBarProps {
 export const TopNavbar = ({ user, setUser }: TopNavBarProps) => {
     return (
         <>
-            <div className=" relative  h-fit w-fit   items-center justify-around lg:flex lg:w-4/12 xl:w-4/12 ">
+            <div className=" absolute ml-0  h-fit w-6/12 items-center   justify-around lg:relative lg:ml-20 lg:flex  xl:w-4/12 ">
                 <div className="hidden w-5/12 items-center justify-around lg:flex lg:w-4/12 xl:w-11/12  ">
                     <NavLink title="Documentation" url="./" />
                     <NavLink title="Pricing" url="./" />
@@ -29,8 +28,7 @@ export const TopNavbar = ({ user, setUser }: TopNavBarProps) => {
                     <NavLink title="Register" url="register" />
                 </div>
             ) : (
-                <div className="hidden w-1/5 justify-around md:flex  xl:w-2/12 2xl:w-1/12  2xl:justify-between">
-                    {/* <LogoutLink setUser={setUser} /> */}
+                <div className="absolute hidden w-1/5 justify-around md:flex lg:static  xl:w-2/12 2xl:w-1/12  2xl:justify-between">
                     <ProfileTab setUser={setUser} />
                 </div>
             )}

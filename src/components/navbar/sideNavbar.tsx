@@ -3,7 +3,7 @@ import ReorderIcon from "@mui/icons-material/Reorder";
 import { useState } from "react";
 import { NavLink } from "./navLink";
 import React from "react";
-import { LogoutLink } from "./logoutLink";
+import { ProfileTab } from "./ProfileTab";
 
 interface NavToggleProps {
     user: { email: string; name: string } | {};
@@ -34,9 +34,9 @@ export const SideNavbar = ({ user, setUser }: NavToggleProps) => {
                         // changing styles according to the value of menu state
                         className={`absolute flex flex-col items-center ${
                             menu ? "right-0" : "-right-55/100"
-                        } top-44 h-80  w-3/6  ${
+                        } top-44 h-fit w-3/6  py-6  ${
                             menu ? "animate-slide-in" : "animate-slide-out"
-                        } LG:hidden rounded-3xl bg-nav backdrop-blur-sm`}
+                        } LG:hidden visible rounded-3xl bg-nav backdrop-blur-sm lg:hidden`}
                     >
                         <NavLink title="Documentation" side={true} url="./" />
                         <NavLink title="Pricing" side={true} url="./" />
@@ -54,7 +54,7 @@ export const SideNavbar = ({ user, setUser }: NavToggleProps) => {
                                 />
                             </div>
                         ) : (
-                            <LogoutLink setUser={setUser} />
+                            <ProfileTab side={true} setUser={setUser} />
                         )}
                     </div>
                 ) : (
