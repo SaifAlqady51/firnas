@@ -1,15 +1,24 @@
-import React, { SetStateAction, useEffect, useState } from "react";
-import { NavLink } from "./navLink";
+import React, {
+    AnchorHTMLAttributes,
+    SetStateAction,
+    useEffect,
+    useState,
+} from "react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import Link from "next/link";
+import cn from "@/utils/cn";
 
-interface LogoutLinkProps {
+interface LogoutLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
     setUser: React.Dispatch<
         SetStateAction<{ email: string; name: string } | {}>
     >;
 }
 
-export const LogoutLink = ({ setUser }: LogoutLinkProps) => {
+export const LogoutLink = ({
+    setUser,
+    className,
+    ...props
+}: LogoutLinkProps) => {
     // this state used as a depandency for useEffect
     const [update, setUpdate] = useState(true);
 
@@ -39,7 +48,7 @@ export const LogoutLink = ({ setUser }: LogoutLinkProps) => {
     };
 
     return (
-        <Link onClick={logout} href="/">
+        <Link className={cn("", className)} onClick={logout} href="/">
             Logout
         </Link>
     );
