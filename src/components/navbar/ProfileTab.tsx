@@ -21,6 +21,7 @@ export const ProfileTab = ({ setUser, side }: Props) => {
             >
                 Profile
             </div>
+            {/* Token and Logout Links */}
             {showProfileDetails && (
                 <div
                     className={`${
@@ -32,7 +33,9 @@ export const ProfileTab = ({ setUser, side }: Props) => {
                     <p className="mb-2 w-8/12 cursor-pointer rounded-lg py-2 text-center text-lg hover:bg-black dark:hover:bg-blue-200">
                         Token
                     </p>
+                    {/* manual divider */}
                     <div className="h-[1px] w-10/12 bg-white dark:bg-slate-700"></div>
+                    {/* Logout Link */}
                     <p className=" mt-2 w-8/12 cursor-pointer rounded-lg py-2 text-center text-lg hover:bg-black dark:hover:bg-blue-200">
                         <LogoutLink className="" setUser={setUser} />
                     </p>
