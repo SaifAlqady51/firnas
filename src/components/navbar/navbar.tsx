@@ -8,10 +8,10 @@ const NavBar = () => {
 
     return (
         <div
-            className={`fixed inset-0  z-50 mx-auto mt-4 flex h-24 w-11/12 items-center justify-center rounded-full bg-nav font-bold text-textColor backdrop-blur-sm dark:text-[#fefae0] lg:justify-around`}
+            className={`fixed inset-0  z-50 mx-auto mt-4 flex h-24 w-11/12 items-center justify-center rounded-full bg-nav font-bold text-textColor backdrop-blur-sm dark:text-[#fefae0] md:justify-around`}
         >
             {/* website Name */}
-            <Link className="text-4xl font-bold" href="/">
+            <Link className="text-4xl font-bold " href="/">
                 Firnas
             </Link>
 
