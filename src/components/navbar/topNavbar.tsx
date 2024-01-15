@@ -2,6 +2,7 @@ import { NavLink } from "./navLink";
 import React from "react";
 import { LogoutLink } from "./logoutLink";
 import { ThemeToggler } from "./themeToggler";
+import { ProfileTab } from "./ProfileTab";
 
 interface TopNavBarProps {
     user: { email: string; name: string } | {};
@@ -29,7 +30,8 @@ export const TopNavbar = ({ user, setUser }: TopNavBarProps) => {
                 </div>
             ) : (
                 <div className="hidden w-1/5 justify-around md:flex  xl:w-2/12 2xl:w-1/12  2xl:justify-between">
-                    <LogoutLink setUser={setUser} />
+                    {/* <LogoutLink setUser={setUser} /> */}
+                    <ProfileTab setUser={setUser} />
                 </div>
             )}
         </>
