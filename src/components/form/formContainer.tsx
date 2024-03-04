@@ -15,6 +15,7 @@ import { useState } from "react";
 import InputError from "./inputError";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useRouter, useSearchParams } from "next/navigation";
+import { LoginFormSchema } from "@/schemas/loginForm-schema";
 
 const inputs: "email" | "password" | "rePassword" | "code" | "name" = "email";
 
@@ -61,7 +62,8 @@ const FormCardContainer = ({
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<Inputs>({ resolver: zodResolver(formInputsType) });
+    } = useForm<Inputs>({ resolver: zodResolver(LoginFormSchema) });
+    console.log(errors.email);
 
     // onSubmit form function
     const onSubmit: SubmitHandler<Inputs> = async (data, event) => {
